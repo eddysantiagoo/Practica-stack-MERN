@@ -1,4 +1,4 @@
-const mongoose = require ('mongoose')
+const mongoose = require ('mongoosee')
 
 mongoose.connection.on('open', () => console.log('db connect!'))
 
@@ -9,5 +9,3 @@ async function connectDb ({ host, port, dbName}) {
 
 
 module.exports = connectDb
-
-
