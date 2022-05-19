@@ -1,4 +1,4 @@
-const mongoose = require ('mongoosee')
+const mongoose = require ('mongoose')
 
 mongoose.connection.on('open', () => console.log('db connect!'))
 
