@@ -9,12 +9,18 @@ async function addProduct (req, res){
             description
         } = req.body
 
+
         const product = Product({
             name,
             size,
             unitaryPrice,
             description
         })
+
+        if (req.file){
+            const { filename } = req.file;
+            product.setImgUrl(filename)
+        }
 
         const productStored = await product.save()
 
