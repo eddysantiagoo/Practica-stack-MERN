@@ -5,8 +5,9 @@ export default function AddButton() {
   return (
     <Section>
         <Container>
-            <Button color="primary">
-            Add</Button>
+          <div className="is-pulled-right">
+           <Button color="primary">Add</Button>
+          </div>
         </Container>
     </Section>
   )
