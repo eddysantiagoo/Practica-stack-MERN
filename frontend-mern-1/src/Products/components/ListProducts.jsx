@@ -1,30 +1,29 @@
 import { useEffect, useState } from "react";
+import { getProducts } from "../services/index";
 import Loading from "./Loading";
 
 const ListProducts = () => {
     const [isLoading, setIsLoading] = useState(true);
+    const [products, setProducts] = useState([]);
 
-    useEffect(() => {
+    useEffect( () => {
+      
+      async function loadProducts (){
+        const response = await getProducts()
+        
+        if (response.stauts === 200) {
+          setProducts(response.data.products)
+        }
+      }
 
-      const timeId = setInterval(() => {
-        console.log("useEffect")
-        setIsLoading(!isLoading)
-      }, 2000)
-
-      return () => clearInterval(timeId)
-    }, []);
-
-    useEffect(() => {
-      console.log("Only once time")
-    }, [isLoading]);
+      loadProducts()
+    }, [])
 
     return (
-        isLoading
-        ? <Loading />
-        : 'Mostar listado'
-
-
+      isLoading
+      ? <Loading />
+      : 'Mostar listado'
   )
 }
- 
-export default ListProducts;
+
+export default ListProducts
